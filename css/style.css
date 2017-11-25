@@ -60,6 +60,10 @@ body{
 	vertical-align: middle;
 }
 
+#message{
+	margin-bottom: 50px;
+}
+
 .container{
 	margin: auto;
 	width: 55%;

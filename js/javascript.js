@@ -1,28 +1,14 @@
 var name = "";
-function startChat(){
-	name = document.getElementById('txtNome').value;
-
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		// 4 DONE | 200 OK
-		if (this.readyState == 4 && this.status == 200) {
-			var conteudo_chat = this.responseText;
-			document.getElementById('container').innerHTML = conteudo_chat;
-			connectUser();
-		}
-
-	}
-
-	xhttp.open("GET", "chat.html", true);
-	xhttp.send();
-}
 
 function connectUser(){
+	name = document.getElementById('txtNome').value;
+	document.getElementById('txtNome').value = "";
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		// 4 DONE | 200 OK
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
 			if (this.responseText == "OK") {
+				startChat();
 				getConnectedUsers();
 				loadWebChat();
 				setInterval(loadWebChat, 3000);
@@ -30,12 +16,26 @@ function connectUser(){
 			} else {
 				alert(this.responseText);
 			}
-
-			 document.getElementById('chat_user').innerHTML = name;
 		}
 	}
 
 	xhttp.open("POST", "http://www.angelito.com.br/webchat/user?nickname=" + name);
+	xhttp.send();
+}
+
+function startChat(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		// 4 DONE | 200 OK
+		if (this.readyState == 4 && this.status == 200) {
+			var conteudo_chat = this.responseText;
+			document.getElementById('container').innerHTML = conteudo_chat;
+			document.getElementById('chat_user').innerHTML = name;
+		}
+
+	}
+
+	xhttp.open("GET", "chat.html", true);
 	xhttp.send();
 }
 
@@ -101,6 +101,30 @@ function sendMessage(){
 
 	xhttp.open("POST", "http://www.angelito.com.br/webchat/send?nickname=" + name + '&textmsg=' + message, true);
 	xhttp.send();
+}
+
+function cleanPage(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			alert(this.responseText);
+		}
+	}
+
+	xhttp.open("GET", "http://www.angelito.com.br/webchat/reset_messages", true);
+	xhttp.send();
+}
+
+function resetUsers(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			alert(this.responseText);
+		}
+	}
+
+	xhttp.open("GET", "http://www.angelito.com.br/webchat/reset_users", true);
+	xhttp.send();	
 }
 
 function scrolldown(){
