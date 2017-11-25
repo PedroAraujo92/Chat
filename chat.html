@@ -13,7 +13,7 @@
 </div>
 <div class="footer">
 	<div class="container chat-footer">
-		<input class="input-text" type="text" name="txtMessage" id="txtMessage" placeholder="Digite sua mensagem...">
-		<button class="btnEnviar" type="submit" name="btnEnviar" id="btnEnviar">Enviar</button>
+		<input class="input-text" type="text" name="txtMessage" id="txtMessage" placeholder="Digite sua mensagem..." onkeypress="event.keyCode == 13 ? sendMessage() : null">
+		<button class="btnEnviar" type="submit" name="btnEnviar" id="btnEnviar" onclick="sendMessage()">Enviar</button>
 	</div>
 </div>
