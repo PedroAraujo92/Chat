@@ -1,5 +1,6 @@
 div{
 	font-family: Arial;
+	display: block;
 }
 
 img{
@@ -10,11 +11,13 @@ img{
 input{
 	margin: auto;
 	display: block;
-	width: 240px;
-	height: 24px;
+	width: 220px;
+	height: 14px;
 	font-size: 16px;
 	border-radius: 5px;
 	margin-bottom: 15px;
+	padding: 10px;
+	font-family: Tahoma;
 }
 
 button{
@@ -40,38 +43,54 @@ button:hover {
 
 body{
 	background-color: lightblue;
+	margin: 0px;
+	margin-bottom: 50px;
+}
+
+hr{
+	border:  0px;
+	height: 1px;
+	background-color: silver;
 }
 
 #btnEnviar{
-	width: 60px;
-	float: right;
-	height: 40px;
-	margin-top: 12px;
+  margin-left: 25px;
+  width: 65px;
+  height: 35px;
 }
 
 #txtMessage{
-	margin-top: 10px;
-
+	margin-top: 3px;
+	height: 30px;
+	padding: 0;
+	width: 400px;
+	text-indent: 1em;
 }
 
 #txtMessage, #btnEnviar{
 	display: inline-block;
-	height: 100%;
 	vertical-align: middle;
 }
 
-#message{
-	margin-bottom: 50px;
+#chat_user{
+	font-family: Tahoma;
+	font-size: large;
+}
+
+#users{
+	font-size: small;	
 }
 
 .container{
 	margin: auto;
-	width: 55%;
+	width: 500px;
+	padding: 5px;
 }
 
 .chat-footer{
-	margin: auto;
-	width: 32%;
+	display: flex;
+	width: 360px;
+	padding: 5px;
 }
 
 .footer{
@@ -82,4 +101,42 @@ body{
 	right: 0px;
 	margin-bottom: 0px;
 	background-color: #A9B0CD
+}
+
+.content.left {
+	margin-right: 30px;
+}
+
+.content.right {
+	margin-left: 30px;
+	background: #666699;
+}
+
+.content {
+	background: #A9B0CD;
+	border-radius: 5px;
+	font: 10pt Arial,Tahoma;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.content > .user,
+.content > .message {
+	display: block;
+}
+.content > .date {
+	font-weight: normal;
+}
+.content > .date,
+.content > .user {
+	font-size: 8pt;
+}
+.content > .user {
+	font-weight: bold;
+}
+.content > .message {
+	font-style: italic;
+}
+.content.right > .message {
+	text-align: right;
 }

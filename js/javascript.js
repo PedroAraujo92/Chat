@@ -1,4 +1,5 @@
 var name = "";
+var count = 0;
 
 function connectUser(){
 	name = document.getElementById('txtNome').value;
@@ -66,13 +67,16 @@ function loadWebChat(){
 		// 4 DONE | 200 OK
 		if (this.readyState == 4 && this.status == 200) {
 			var json = JSON.parse(this.responseText);
-
+			
+			countx = json.length;
+			if (countx != count) { count = countx; setTimeout(scrolldown, 100); }
+			
 			for(var i = 0; i < json.length; i++) {
 				var item = json[i];
 				if (item.user == name) {
-					messages += '<div class="content right"><span class="user"><span class="date">['+item.datetime+']</span> Você diz:</span><span class="message">'+item.textmsg+'</span></div>';
+					messages += '<div class="content right" id="content.right"><span class="user"><span class="date">['+item.datetime+']</span> Você diz:</span><span class="message">'+item.textmsg+'</span></div>';
 				} else {
-					messages += '<div class="content left"><span class="user"><span class="date">['+item.datetime+']</span> '+item.user+' diz:</span><span class="message">'+item.textmsg+'</span></div>';
+					messages += '<div class="content left" id="content.left"><span class="user"><span class="date">['+item.datetime+']</span> '+item.user+' diz:</span><span class="message">'+item.textmsg+'</span></div>';
 				}
 			}
 

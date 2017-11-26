@@ -14,7 +14,7 @@
 				</a>
 			</div>
 			<div>
-				<input type="text" name="txtNome" id="txtNome" placeholder="Quem é você?" required>
+				<input type="text" name="txtNome" id="txtNome" onkeypress="event.keyCode == 13 ? connectUser() : null" placeholder="Quem é você?" required>
 				<button type="submit" name="btnEntrar" onclick="connectUser()">Entrar</button>
 				<button type="submit" name="btnSair" onclick="resetUsers()">Desconectar usuários</button>
 				<button type="submit" name="btnLimpar" onclick="cleanPage()">Limpar histórico</button>
